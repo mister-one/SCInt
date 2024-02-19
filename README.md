@@ -28,104 +28,39 @@ All of the files above are very short and thoroughly commented, and also contain
 
 ## quick start
 
-As the simplest example, we can reproduce the [Wikipedia article on BPE](https://en.wikipedia.org/wiki/Byte_pair_encoding) as follows:
+As the simplest example, we can call the Core module with the following input:
 
 ```python
-from minbpe import BasicTokenizer
-tokenizer = BasicTokenizer()
-text = "aaabdaaabac"
-tokenizer.train(text, 256 + 3) # 256 are the byte tokens, then do 3 merges
-print(tokenizer.encode(text))
-# [258, 100, 258, 97, 99]
-print(tokenizer.decode([258, 100, 258, 97, 99]))
-# aaabdaaabac
-tokenizer.save("toy")
-# writes two files: toy.model (for loading) and toy.vocab (for viewing)
+from Kernel.Modules._Core.main import Core
+
+your_input = 'Order my favoirite pizza that cost less than 10£'
+
+core_module = Core()
+
+core_module.execute(your_input)
+
 ```
 
-According to Wikipedia, running bpe on the input string: "aaabdaaabac" for 3 merges results in the string: "XdXac" where  X=ZY, Y=ab, and Z=aa. The tricky thing to note is that minbpe always allocates the 256 individual bytes as tokens, and then merges bytes as needed from there. So for us a=97, b=98, c=99, d=100 (their [ASCII](https://www.asciitable.com) values). Then when (a,a) is merged to Z, Z will become 256. Likewise Y will become 257 and X 258. So we start with the 256 bytes, and do 3 merges to get to the result above, with the expected output of [258, 100, 258, 97, 99].
+What the Core module does is given an input it predict and execute the most suited module to complete the task untill the end_of_task
 
-## inference: GPT-4 comparison
+`(input)--> || __pred__ | __exec__ || --> (output)`
 
-We can verify that the `RegexTokenizer` has feature parity with the GPT-4 tokenizer from [tiktoken](https://github.com/openai/tiktoken) as follows:
+## Deep dive
 
-```python
-text = "hello123!!!? (안녕하세요!) 😉"
+The PrivateNode is comprised of 3 folders:
+- data
+    is where local data is stored
+- connection
+    is where the log of the messages in and out of the private node are stored
+- Kernel
+    is where the Modules are stores.
 
-# tiktoken
-import tiktoken
-enc = tiktoken.get_encoding("cl100k_base")
-print(enc.encode(text))
-# [15339, 4513, 12340, 30, 320, 31495, 230, 75265, 243, 92245, 16715, 57037]
+### What is a module
 
-# ours
-from minbpe import GPT4Tokenizer
-tokenizer = GPT4Tokenizer()
-print(tokenizer.encode(text))
-# [15339, 4513, 12340, 30, 320, 31495, 230, 75265, 243, 92245, 16715, 57037]
-```
-
-(you'll have to `pip install tiktoken` to run). Under the hood, the `GPT4Tokenizer` is just a light wrapper around `RegexTokenizer`, passing in the merges and the special tokens of GPT-4. We can also ensure the special tokens are handled correctly:
-
-```python
-text = "<|endoftext|>hello world"
-
-# tiktoken
-import tiktoken
-enc = tiktoken.get_encoding("cl100k_base")
-print(enc.encode(text, allowed_special="all"))
-# [100257, 15339, 1917]
-
-# ours
-from minbpe import GPT4Tokenizer
-tokenizer = GPT4Tokenizer()
-print(tokenizer.encode(text, allowed_special="all"))
-# [100257, 15339, 1917]
-```
-
-Note that just like tiktoken, we have to explicitly declare our intent to use and parse special tokens in the call to encode. Otherwise this can become a major footgun, unintentionally tokenizing attacker-controlled data (e.g. user prompts) with special tokens. The `allowed_special` parameter can be set to "all", "none", or a list of special tokens to allow.
-
-## training
-
-Unlike tiktoken, this code allows you to train your own tokenizer. In principle and to my knowledge, if you train the `RegexTokenizer` on a large dataset with a vocabulary size of 100K, you would reproduce the GPT-4 tokenizer.
-
-There are two paths you can follow. First, you can decide that you don't want the complexity of splitting and preprocessing text with regex patterns, and you also don't care for special tokens. In that case, reach for the `BasicTokenizer`. You can train it, and then encode and decode for example as follows:
-
-```python
-from minbpe import BasicTokenizer
-tokenizer = BasicTokenizer()
-tokenizer.train(very_long_training_string, vocab_size=4096)
-tokenizer.encode("hello world") # string -> tokens
-tokenizer.decode([1000, 2000, 3000]) # tokens -> string
-tokenizer.save("mymodel") # writes mymodel.model and mymodel.vocab
-tokenizer.load("mymodel.model") # loads the model back, the vocab is just for vis
-```
-
-If you instead want to follow along with OpenAI did for their text tokenizer, it's a good idea to adopt their approach of using regex pattern to split the text by categories. The GPT-4 pattern is a default with the `RegexTokenizer`, so you'd simple do something like:
-
-```python
-from minbpe import RegexTokenizer
-tokenizer = RegexTokenizer()
-tokenizer.train(very_long_training_string, vocab_size=32768)
-tokenizer.encode("hello world") # string -> tokens
-tokenizer.decode([1000, 2000, 3000]) # tokens -> string
-tokenizer.save("tok32k") # writes tok32k.model and tok32k.vocab
-tokenizer.load("tok32k.model") # loads the model back from disk
-```
-
-Where, of course, you'd want to change around the vocabulary size depending on the size of your dataset.
-
-**Special tokens**. Finally, you might wish to add special tokens to your tokenizer. Register these using the `register_special_tokens` function. For example if you train with vocab_size of 32768, then the first 256 tokens are raw byte tokens, the next 32768-256 are merge tokens, and after those you can add the special tokens. The last "real" merge token will have id of 32767 (vocab_size - 1), so your first special token should come right after that, with an id of exactly 32768. So:
-
-```python
-from minbpe import RegexTokenizer
-tokenizer = RegexTokenizer()
-tokenizer.train(very_long_training_string, vocab_size=32768)
-tokenizer.register_special_tokens({"<|endoftext|>": 32768})
-tokenizer.encode("<|endoftext|>hello world", allowed_special="all")
-```
-
-You can of course add more tokens after that as well, as you like. Finally, I'd like to stress that I tried hard to keep the code itself clean, readable and hackable. You should not have feel scared to read the code and understand how it works. The tests are also a nice place to look for more usage examples. That reminds me:
+A module is the foundamental unit of the Private node
+A module has the folloing elements:
+- main.py file where the module is run
+- config.json where the module core informations are stored
 
 ## tests
 
