@@ -15,7 +15,13 @@ The system is govered by a [Constitution](https://docs.google.com/document/d/1kt
 
 the funcioning of each of the 3 elementsthe associated GPT-2 [code release](https://github.com/openai/gpt-2) from OpenAI. [Sennrich et al. 2015](https://arxiv.org/abs/1508.07909) is cited as the original reference for the use of BPE in NLP applications. Today, all modern LLMs (e.g. GPT, Llama, Mistral) use this algorithm to train their tokenizers.
 
-There are two Tokenizers in this repository, both of which can perform the 3 primary functions of a Tokenizer: 1) train the tokenizer vocabulary and merges on a given text, 2) encode from text to tokens, 3) decode from tokens to text. The files of the repo are as follows:
+There are 3 folders in this repository: 
+1) [data](SCInt/data)
+    is where local data is stored
+2) [connection](SCInt/connection)
+    is where the log of the messages in and out of the private node are stored
+3) [Kernel](SCInt/Kernel)
+    is where the Modules are stores.
 
 1. [minbpe/base.py](minbpe/base.py): Implements the `Tokenizer` class, which is the base class. It contains the `train`, `encode`, and `decode` stubs, save/load functionality, and there are also a few common utility functions. This class is not meant to be used directly, but rather to be inherited from.
 2. [minbpe/basic.py](minbpe/basic.py): Implements the `BasicTokenizer`, the simplest implementation of the BPE algorithm that runs directly on text.
