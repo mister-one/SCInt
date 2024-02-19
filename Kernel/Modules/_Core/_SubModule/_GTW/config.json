@@ -1,0 +1,9 @@
+{
+    "module":
+    {
+        "path": "Kernel/Core/_SubModule/_GTW",
+        "data_path":"Data/Private/_Me/Core/_GTW/_data/entity_x",
+        "_data_path":"Data/{{access_level}}/{{address}}/{{module}}/{{optional_sub_module}}/_data/entity_x"
+        
+    }
+}

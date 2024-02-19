@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/scint/schema#",
+    "_type": "object",
+    "all_features": [
+        "input.data_type",
+        "input.context_instruction",
+        "input.data",
+        "output.desired_schema"
+    ],
+    "_properties": {
+        "input": {
+            "_type": "object",
+            "_description": "The input to the Core module",
+            "_properties": {
+                "data_type": {
+                    "_type": "string"
+                },
+                "context_instruction": {
+                    "_type": "float",
+                    "_unit_of_measure": "currency_gbp"
+                },
+                "data": {
+                    "_type": "string"
+                }
+            }
+        },
+        "output": {
+            "_type": "object",
+            "_description": "The desired schema the Core module should return. If this is not specified it will return the default output schema",
+            "_properties": {
+                "desired_schema": {
+                    "_type": "JSON"
+                }
+            }
+        }
+    }
+}

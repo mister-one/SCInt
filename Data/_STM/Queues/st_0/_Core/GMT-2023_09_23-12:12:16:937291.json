@@ -1,0 +1,10 @@
+{
+    "_input": {
+        "__data_type": "text",
+        "__context_instruction": "deafaul(follow the instruction in the data)",
+        "__data": "let me join scint @scint.genesis()",
+        "__output_config": {
+            "___data_type": "text"
+        }
+    }
+}

@@ -1,0 +1,64 @@
+ -- _opre__uk_post
+ -- _opre__uk_motion
+ -- _opre__uk_solution
+ -- _opre__uk_t0_certify_request_queue
+ -- _opre__uk_t1_certify_request_processing
+ -- _opre__uk_t2_truth
+
+ CREATE TABLE `cb-data-dev.opre.uk_post`  (
+  post_id STRING DEFAULT (CAST(GENERATE_UUID() AS STRING)),
+  source STRING DEFAULT SESSION_USER(),
+  created_at_tstamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+  expires_at_tstamp TIMESTAMP,
+  location GEOGRAPHY,
+  data JSON,
+  tag_1 STRING,
+  tag_2 STRING,
+  tag_3 STRING,
+  tag_n STRING
+)
+PARTITION BY DATE(created_at_tstamp);
+
+------------------------------------------
+-- truth_STAGE_0: t0_certify_request_queue
+------------------------------------------
+CREATE TABLE `cb-data-dev.opre.uk_t0_certify_request_queue`  (
+  certify_request_id STRING DEFAULT (CAST(GENERATE_UUID() AS STRING)),
+  created_at_tstamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+  request_expires_at_tstamp TIMESTAMP, -- DEFAULT TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 1 HOUR)
+  encription_pub_key STRING,
+  encription_verification_type STRING DEFAULT "sha-256", --> this means that you can easily verify if the private key you will publish matched the pub_key
+  source STRING DEFAULT SESSION_USER(),
+  statement_type STRING,
+  statement JSON,
+  supporting_evidence JSON
+  )
+PARTITION BY DATE(created_at_tstamp);
+
+
+------------------------------------------
+-- truth_STAGE_1:  t1_certify_request_processing
+------------------------------------------
+CREATE TABLE `cb-data-dev.opre.uk_t1_certify_request_processing`  (
+  process_id STRING DEFAULT (CAST(GENERATE_UUID() AS STRING)),
+  certify_request_id STRING,
+  created_at_tstamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+  source STRING DEFAULT SESSION_USER(),
+  entry_type STRING DEFAULT "truth_certifier_ecncripted_vote",
+  entry_data JSON
+  )
+PARTITION BY DATE(created_at_tstamp);
+
+
+------------------------------------------
+-- truth_STAGE_2: t2_truth
+------------------------------------------
+CREATE TABLE `cb-data-dev.opre.uk_t2_truth`  (
+  truth_id STRING DEFAULT (CAST(GENERATE_UUID() AS STRING)),
+  created_at_tstamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+  certify_request_id STRING,
+  result_data JSON
+  )
+PARTITION BY DATE(created_at_tstamp);
+
+

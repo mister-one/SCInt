@@ -1,0 +1,3 @@
+Core.data --> _Core/_data/_base
+Core.data.settings --> _Core/_data/Settings/_base
+Core.data.settings.certificates --> _Core/_data/Settings/Certificates/_base

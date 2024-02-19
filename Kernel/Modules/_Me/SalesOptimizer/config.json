@@ -1,0 +1,45 @@
+{
+    "module": {
+        "name": "SalesOptimizer",
+        "path": "Kernel/Module/_Me",
+        "data_path": "Data/Private/_Me/_SalesOptimizer/_data",
+        "objective": "the objective of this module is to handle all the potential request"
+    },
+    "schema":{
+        "input":"input-1-0-0.json",
+        "semantic": "semantic-1-0-0.json",
+        "output": "output-1-0-0.json"
+    },
+    "notifications": [
+        {
+            "topic_channel": "#incoming_reply",
+            "type": "queue",
+            "order": "FIFO",
+            "inbound_config": {
+                "creation_type": "event driven",
+                "creation_rule": "any email replies generated from ",
+                "creation_cmd": null
+            },
+            "outbound_config": {
+                "processing_frequency": "instant",
+                "target_endpoint": "Core.execute( {{__notification__}} )"
+            }
+        },
+        {
+            "topic_channel": "#resorcemonitoring",
+            "type": "queue",
+            "order": "FIFO",
+            "inbound_config": {
+                "creation_type": "cron",
+                "creation_rule": "0 0 * * 0",
+                "creation_endpoint": "Core.monitor()"
+            },
+            "outbound_config": {
+                "processing_frequency": "every 5 min",
+                "target_endpoint": "Core.execute( {{__notification__}} )"
+            }
+        }
+    ]
+}
+
+

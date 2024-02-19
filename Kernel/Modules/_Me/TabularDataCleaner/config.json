@@ -1,0 +1,15 @@
+{
+    "var_name": "var_value",
+    "identity": {
+        "public_address": "webe@scint.com"
+    },
+    "module": {
+        "path": "Kernel/Module/_Me/market_faciliator",
+        "data_path": "Data/Private/_Me/TabularDataCleaner",
+        "objective": "the objective of this module is to clean tabular data"
+    },
+    "input_schema": {
+        "inputs": ["operatio"]
+    },
+    "output_schema": {}
+}

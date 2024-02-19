@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/schema/1-0-0",
+    "type": "object",
+    "properties": {
+        "bannerId": {
+            "type": "string",
+            "description": "This is the id of the banner",
+            "example":"11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000"
+        },
+        "campaign":{
+            "source":{
+                "name":{
+                    "type": "string",
+                    "description": "",
+                    "example":"utm"
+                },
+                "version":{
+                    "type": "float",
+                    "description": "",
+                    "example":"1.2"
+                }
+            },
+            "origin":{
+                "type": "string",
+                "description": "",
+                "example":"google_search"
+            }
+        }
+    },
+    "required": ["bannerId", "campaign.origin"],
+    "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+    "metadata": {
+        "auth": {
+            "sender_identity":"test@gmail.com",
+            "one_off_nonce":"test_word",
+            "signature": "encrypted_signature to be decripted with the sender public key",
+            "third_party_security": "github.com/10"
+        },
+        "response_to": {},
+        "truth_certificate":{
+            "certified_information":"I cer",
+            "certifier":{
+                "address":"certiser_secure",
+                "certificate_passkey":"",
+                "proxy_certificate":"{{requester_you_allow}}_{{single_use_token}}_{{expiry_date}}"
+            }
+        },
+        "message_type_handler": ["allowed:: (ASK_PERMISSION, POST_NOTIFICATION, ), '@adyen/pay'"]
+
+    },
+    "data": {
+        "whatever_dictionary_people_want":{}
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "_input": {
+        "__data_type": "image",
+        "__context_instruction": "Identify objects in the image",
+        "__data": "image.jpg",
+        "__output_config": {
+            "___data_type": "json"
+        }
+    }
+}

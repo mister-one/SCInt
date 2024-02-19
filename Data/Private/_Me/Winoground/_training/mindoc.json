@@ -1,0 +1,26 @@
+{
+    "model_type": "Customer Engagement",
+    "additional_context_required": "demografic informations about the user and spending behaviour",
+    "inputs": {
+        "caption_0": "an old person kisses a young person",
+        "caption_1": "a young person kisses an old person",
+        "image_0": "ex_0_img_0.png",
+        "image_1": "ex_0_img_1.png"
+    },
+    "outputs": {
+        "caption_0": "image_0",
+        "caption_1": "image_1"
+    },
+    "assumptions": " ",
+    "logical_reasoning": " ",
+
+    "id": 0,
+    "caption_0": "an old person kisses a young person",
+    "caption_1": "a young person kisses an old person",
+    "image_0": "ex_0_img_0",
+    "image_1": "ex_0_img_1",
+    "tag": "Adjective-Age",
+    "secondary_tag": "",
+    "num_main_preds": 1,
+    "collapsed_tag": "Relation"
+}

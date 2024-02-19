@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/scint/schema#",
+    "entities": [
+        {
+            "_type": "object",
+            "_entity_name": "main",
+            "_description": "the MAIN entity is where the generic data is stored",
+            "_save_path": "Data/Private/_Me/_Core/_data/_base",
+            "all_features": [
+                "input.data_type",
+                "input.context_instruction",
+                "input.data",
+                "output.desired_schema"
+            ],
+            "_properties": {
+                "input": {
+                    "_type": "object",
+                    "_description": "The input to the Core module",
+                    "_properties": {
+                        "data_type": {
+                            "_type": "string"
+                        },
+                        "context_instruction": {
+                            "_type": "float",
+                            "_unit_of_measure": "currency_gbp"
+                        },
+                        "data": {
+                            "_type": "string"
+                        }
+                    }
+                },
+                "output": {
+                    "_type": "object",
+                    "_description": "The desired schema the Core module should return. If this is not specified it will return the default output schema",
+                    "_properties": {
+                        "desired_schema": {
+                            "_type": "JSON"
+                        }
+                    }
+                }
+            }
+        },
+
+        {
+            "_type": "object",
+            "_entity_name": "settings",
+            "_description": "the most important settings items are stored here",
+            "_save_path": "Data/Private/_Me/_Core/_data/Settings/_base",
+            "all_features": [
+                "key",
+                "value"
+            ],
+            "_properties": {
+                "key": {
+                    "_description": "The key",
+                    "_type": "string"
+                },
+                "value": {
+                    "_description": "the value",
+                    "_type": "string"
+                }
+            }
+        },
+
+        {
+            "_type": "object",
+            "_entity_name": "certificate",
+            "_description": "certificate store the security info certificates",
+            "_save_path": "Data/Private/_Me/_Core/_data/Settings/Certificates/_base",
+            "all_features": [
+                "key",
+                "value"
+            ],
+            "_properties": {
+                "key": {
+                    "_description": "The key",
+                    "_type": "string"
+                },
+                "value": {
+                    "_description": "the value",
+                    "_type": "string"
+                }
+            }
+        }
+    ]
+}

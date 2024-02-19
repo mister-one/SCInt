@@ -1,0 +1,8 @@
+{
+    "available_modules":
+        [
+            ["module_name", "description", "shema"],
+            ["module_name", "description", "shema"],
+            ["module_name", "description", "shema"]
+        ]
+}
