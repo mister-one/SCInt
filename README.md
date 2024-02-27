@@ -77,10 +77,13 @@ The current tech industry is broken. It's fragmented and wastes an insane amount
 The industry is crowded with white collar people who add Zero value and stand on the shoulders of few hard core engineers/creators who actually build and create value for us all. Most of the time this creator gets a small share of the value they create as business weasels, sales geezers, and banker wankers eat the bigger portion of the pie by creating artificial barriers.
 SCInt is here to knock these walls down and build the best open source system built for Humans.
 SCInt is essentially build on the belief that with these 3 core elements:
+
 1. Openness
 2. Truth
 3. Fair reward
+
 We can deliver a fully functioning Super Collective Intelligence that helps humanity as a whole in the pursuit of knowledge and understanding.
+
 In the system im proposing there are 3 agents:
 - Truth Certifiers
 Imagine this as a simple API that given a statement tells you if your statement is true or false. Collectively they vote and decide if something is true or false. To prevent bad actors these TruthCertifiers must have truth_liability_policies that make sure they have skin in the game should they lie
