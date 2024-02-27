@@ -85,9 +85,11 @@ SCInt is essentially build on the belief that with these 3 core elements:
 We can deliver a fully functioning Super Collective Intelligence that helps humanity as a whole in the pursuit of knowledge and understanding.
 
 In the system im proposing there are 3 agents:
-- Truth Certifiers
+- `Truth Certifiers`
 Imagine this as a simple API that given a statement tells you if your statement is true or false. Collectively they vote and decide if something is true or false. To prevent bad actors these TruthCertifiers must have truth_liability_policies that make sure they have skin in the game should they lie
-- Open Registry
+
+- `Open Registry`
 This could be for example BigQuery and is a big queryable collection of public data. The idea is that if you have a central repository of well structured information that is impartially organised (not for example skewed by marketing ads) information can flow faster and more effectively. (For example if you take an Uber you really want to create a public record that says “I need to go from A to B” and this should be accessible to anyone who can take you from A to B rather than just to Uber.
-- Private Nodes 
+
+- `Private Nodes`
 It’s just a source code that runs on private computers and has some predefined methods to interact with other private nodes, to notarize information and to publish public information. It contains a bunch of modules that solve specific problems and by combining multiple modules it can become intelligent.
