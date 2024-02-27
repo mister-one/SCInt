@@ -8,6 +8,8 @@ The system is comprised of 3 core elements:
 2. OpenRegistry
 3. TruthCertify
 
+![image info](/_documentation/images/overview.png)
+
 The system is govered by a [Constitution](https://docs.google.com/document/d/1ktIPsv0NkotT9ihCdLxaCJkEQ9Kh12R5zb3aqeBpGQk/edit#heading=h.qac0b2w95mhh) and by specific codes that regulate each of the 3 core elements:
 - [Code Of Conduct](https://docs.google.com/document/d/1GcxW_d6yM1EUgexUrHy8h6u4Y8F9ER1zOpm0WQKJ5ac/edit#heading=h.z4ii25jmc5sn) relevant for PrivateNode
 - [Code Of Information](https://docs.google.com/document/d/13_CACOXRjZBQqwn62qOxpuiqW4l_4x_I5xe6kEeSvME/edit#heading=h.z4ii25jmc5sn) relevant for OpenRegistry
