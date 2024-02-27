@@ -8,7 +8,8 @@ The system is comprised of 3 core elements:
 2. OpenRegistry
 3. TruthCertify
 
-![image info](/_documentation/images/overview.png)
+
+![overview_image_of_system](/_documentation/images/overview.png)
 
 The system is govered by a [Constitution](https://docs.google.com/document/d/1ktIPsv0NkotT9ihCdLxaCJkEQ9Kh12R5zb3aqeBpGQk/edit#heading=h.qac0b2w95mhh) and by specific codes that regulate each of the 3 core elements:
 - [Code Of Conduct](https://docs.google.com/document/d/1GcxW_d6yM1EUgexUrHy8h6u4Y8F9ER1zOpm0WQKJ5ac/edit#heading=h.z4ii25jmc5sn) relevant for PrivateNode
@@ -69,3 +70,21 @@ to run the tests. (-v is verbose, slightly prettier).
 ## License
 
 MIT
+
+## Manifesto
+
+The current tech industry is broken. It's fragmented and wastes an insane amount of resources. It's dominated by Venture capitalists who splash money to lock you in renting solutions called saas with the objective of extracting as much value from you as possible.
+The industry is crowded with white collar people who add Zero value and stand on the shoulders of few hard core engineers/creators who actually build and create value for us all. Most of the time this creator gets a small share of the value they create as business weasels, sales geezers, and banker wankers eat the bigger portion of the pie by creating artificial barriers.
+SCInt is here to knock these walls down and build the best open source system built for Humans.
+SCInt is essentially build on the belief that with these 3 core elements:
+Openness
+Truth
+Fair reward
+We can deliver a fully functioning Super Collective Intelligence that helps humanity as a whole in the pursuit of knowledge and understanding.
+In the system im proposing there are 3 agents:
+Truth Certifiers
+Imagine this as a simple API that given a statement tells you if your statement is true or false. Collectively they vote and decide if something is true or false. To prevent bad actors these TruthCertifiers must have truth_liability_policies that make sure they have skin in the game should they lie
+Open Registry
+This could be for example BigQuery and is a big queryable collection of public data. The idea is that if you have a central repository of well structured information that is impartially organised (not for example skewed by marketing ads) information can flow faster and more effectively. (For example if you take an Uber you really want to create a public record that says “I need to go from A to B” and this should be accessible to anyone who can take you from A to B rather than just to Uber.
+Private Nodes 
+It’s just a source code that runs on private computers and has some predefined methods to interact with other private nodes, to notarize information and to publish public information. It contains a bunch of modules that solve specific problems and by combining multiple modules it can become intelligent.
