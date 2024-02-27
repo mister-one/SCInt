@@ -16,21 +16,13 @@ The system is govered by a [Constitution](https://docs.google.com/document/d/1kt
 the funcioning of each of the 3 elementsthe associated GPT-2 [code release](https://github.com/openai/gpt-2) from OpenAI. [Sennrich et al. 2015](https://arxiv.org/abs/1508.07909) is cited as the original reference for the use of BPE in NLP applications. Today, all modern LLMs (e.g. GPT, Llama, Mistral) use this algorithm to train their tokenizers.
 
 There are 3 folders in this repository: 
-1) [data](/data)
+1) [data](/Data)
     is where local data is stored
-2) [connection](/connection)
+2) [connection](/Connection)
     is where the log of the messages in and out of the private node are stored
 3) [Kernel](/Kernel)
     is where the Modules are stores.
 
-1. [minbpe/base.py](minbpe/base.py): Implements the `Tokenizer` class, which is the base class. It contains the `train`, `encode`, and `decode` stubs, save/load functionality, and there are also a few common utility functions. This class is not meant to be used directly, but rather to be inherited from.
-2. [minbpe/basic.py](minbpe/basic.py): Implements the `BasicTokenizer`, the simplest implementation of the BPE algorithm that runs directly on text.
-3. [minbpe/regex.py](minbpe/regex.py): Implements the `RegexTokenizer` that further splits the input text by a regex pattern, which is a preprocessing stage that splits up the input text by categories (think: letters, numbers, punctuation) before tokenization. This ensures that no merges will happen across category boundaries. This was introduced in the GPT-2 paper and continues to be in use as of GPT-4. This class also handles special tokens, if any.
-4. [minbpe/gpt4.py](minbpe/gpt4.py): Implements the `GPT4Tokenizer`. This class is a light wrapper around the `RegexTokenizer` (2, above) that exactly reproduces the tokenization of GPT-4 in the [tiktoken](https://github.com/openai/tiktoken) library. The wrapping handles some details around recovering the exact merges in the tokenizer, and the handling of some unfortunate (and likely historical?) 1-byte token permutations.
-
-Finally, the script [train.py](train.py) trains the two major tokenizers on the input text [tests/taylorswift.txt](tests/taylorswift.txt) (this is the Wikipedia entry for her kek) and saves the vocab to disk for visualization. This script runs in about 25 seconds on my (M1) MacBook.
-
-All of the files above are very short and thoroughly commented, and also contain a usage example on the bottom of the file.
 
 ## quick start
 
@@ -53,19 +45,9 @@ What the Core module does is given an input it predict and execute the most suit
 
 ## Deep dive
 
-The PrivateNode is comprised of 3 folders:
-- data
-    is where local data is stored
-- connection
-    is where the log of the messages in and out of the private node are stored
-- Kernel
-    is where the Modules are stores.
-
-### What is a module
-
 A module is the foundamental unit of the Private node
 A module has the folloing elements:
-- main.py file where the module is run
+- main.py file where the module class is implemented 
 - config.json where the module core informations are stored
 
 ## tests
@@ -80,11 +62,7 @@ to run the tests. (-v is verbose, slightly prettier).
 
 ## todos
 
-- write a more optimized Python version that could run over large files and big vocabs
-- write an even more optimized C or Rust version (think through)
-- rename GPT4Tokenizer to GPTTokenizer and support GPT-2/GPT-3/GPT-3.5 as well?
-- write a LlamaTokenizer similar to GPT4Tokenizer (i.e. attempt sentencepiece equivalent)
-- video coming soon ;)
+- video coming soon :)
 
 ## License
 
