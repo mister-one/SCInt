@@ -91,7 +91,7 @@ class TabularDataCleaner(Core):
         self.data.to_csv(file_path, index=False)
         print(f"Cleaned data saved to {file_path}.")
 
-    def run(self, file_path):
+    def execute(self, file_path):
         """
         Execute the data cleaning process.
         """
@@ -117,10 +117,4 @@ class TabularDataCleaner(Core):
         print("\nData cleaning process completed.")
 
 # Example usage:
-data_cleaner = TabularDataCleaner('/Users/alessandro.rea/Desktop/scint-private-node/Data/Private/_Me/TabularDataCleaner/_data/InputFiles/_base/test.csv')
-
-data_cleaner.ask_chatgpt(1)
-data_cleaner.run('/Users/alessandro.rea/Desktop/scint-private-node/Data/Private/_Me/TabularDataCleaner/_data/InputFiles/_base/test.csv')
-
-data_cleaner.ask_chatgpt(1)
 # data_cleaner.run('your_data.csv')

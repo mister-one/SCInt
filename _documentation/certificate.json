@@ -1,0 +1,9 @@
+{
+    "certificate_type": "[truth_certificate, authorise_and_update, authorise_and_wait",
+    "certified_information": "I cer",
+    "certifier": {
+        "address": "certiser_secure",
+        "certificate_passkey": "",
+        "proxy_certificate": "{{requester_you_allow}}_{{single_use_token}}_{{expiry_date}}"
+    }
+}

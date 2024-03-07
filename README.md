@@ -71,6 +71,9 @@ to run the tests. (-v is verbose, slightly prettier).
 
 MIT
 
+## System Interaction
+![system_interaction](/_documentation/images/system_interaction.png)
+
 ## Manifesto
 
 The current tech industry is broken. It's fragmented and wastes an insane amount of resources. It's dominated by Venture capitalists who splash money to lock you in renting solutions called saas with the objective of extracting as much value from you as possible.
