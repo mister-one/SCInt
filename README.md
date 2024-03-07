@@ -98,6 +98,6 @@ It’s just a source code that runs on private computers and has some predefined
 ## Visual Assets
 - `system_interaction`
 ![system_interaction](/_documentation/images/system_interaction.jpeg)
-
+_________________
 - `Code Structure`
 ![folder_structure](/_documentation/images/folder_structure.jpeg)
