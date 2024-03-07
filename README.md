@@ -72,7 +72,7 @@ to run the tests. (-v is verbose, slightly prettier).
 MIT
 
 ## System Interaction
-![system_interaction](/_documentation/images/system_interaction.png)
+![system_interaction](/_documentation/images/system_interaction.jpeg)
 
 ## Manifesto
 
