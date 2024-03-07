@@ -96,8 +96,8 @@ This could be for example BigQuery and is a big queryable collection of public d
 It’s just a source code that runs on private computers and has some predefined methods to interact with other private nodes, to notarize information and to publish public information. It contains a bunch of modules that solve specific problems and by combining multiple modules it can become intelligent.
 
 ## Visual Assets
-- `system_interaction`
+`system_interaction`
 ![system_interaction](/_documentation/images/system_interaction.jpeg)
 _________________
-- `Code Structure`
+`Code Structure`
 ![folder_structure](/_documentation/images/folder_structure.jpeg)
